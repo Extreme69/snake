@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-///█ ■
-////https://www.youtube.com/watch?v=SGZgvMwjq2U
+
 namespace Snake
 {
     class Program
@@ -20,8 +19,8 @@ namespace Snake
             int score = 5;
             int gameover = 0;
             pixel hoofd = new pixel();
-            hoofd.xpos = screenwidth/2;
-            hoofd.ypos = screenheight/2;
+            hoofd.xpos = screenwidth / 2;
+            hoofd.ypos = screenheight / 2;
             hoofd.schermkleur = ConsoleColor.Red;
             string movement = "RIGHT";
             List<int> xposlijf = new List<int>();
@@ -34,18 +33,18 @@ namespace Snake
             while (true)
             {
                 Console.Clear();
-                if (hoofd.xpos == screenwidth-1 || hoofd.xpos == 0 ||hoofd.ypos == screenheight-1 || hoofd.ypos == 0)
-                { 
+                if (hoofd.xpos == screenwidth - 1 || hoofd.xpos == 0 || hoofd.ypos == screenheight - 1 || hoofd.ypos == 0)
+                {
                     gameover = 1;
                 }
-                for (int i = 0;i< screenwidth; i++)
+                for (int i = 0; i < screenwidth; i++)
                 {
                     Console.SetCursorPosition(i, 0);
                     Console.Write("■");
                 }
                 for (int i = 0; i < screenwidth; i++)
                 {
-                    Console.SetCursorPosition(i, screenheight -1);
+                    Console.SetCursorPosition(i, screenheight - 1);
                     Console.Write("■");
                 }
                 for (int i = 0; i < screenheight; i++)
@@ -62,9 +61,9 @@ namespace Snake
                 if (berryx == hoofd.xpos && berryy == hoofd.ypos)
                 {
                     score++;
-                    berryx = randomnummer.Next(1, screenwidth-2);
-                    berryy = randomnummer.Next(1, screenheight-2);
-                } 
+                    berryx = randomnummer.Next(1, screenwidth - 2);
+                    berryy = randomnummer.Next(1, screenheight - 2);
+                }
                 for (int i = 0; i < xposlijf.Count(); i++)
                 {
                     Console.SetCursorPosition(xposlijf[i], yposlijf[i]);
@@ -93,7 +92,6 @@ namespace Snake
                     if (Console.KeyAvailable)
                     {
                         ConsoleKeyInfo toets = Console.ReadKey(true);
-                        //Console.WriteLine(toets.Key.ToString());
                         if (toets.Key.Equals(ConsoleKey.UpArrow) && movement != "DOWN" && buttonpressed == "no")
                         {
                             movement = "UP";
@@ -140,9 +138,10 @@ namespace Snake
                 }
             }
             Console.SetCursorPosition(screenwidth / 5, screenheight / 2);
-            Console.WriteLine("Game over, Score: "+ score);
-            Console.SetCursorPosition(screenwidth / 5, screenheight / 2 +1);
+            Console.WriteLine("Game over, Score: " + score);
+            Console.SetCursorPosition(screenwidth / 5, screenheight / 2 + 1);
         }
+
         class pixel
         {
             public int xpos { get; set; }
@@ -151,4 +150,3 @@ namespace Snake
         }
     }
 }
-//¦
